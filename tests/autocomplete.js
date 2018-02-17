@@ -44,6 +44,7 @@ describe('Autocomplete', () => {
       .action(function(args, options, logger) {
 
       })
+      .and()
 
       // the "return" command
       .command('return', 'Return an order')
@@ -496,5 +497,3 @@ describe('Autocomplete', () => {
 
 
 });
-
-

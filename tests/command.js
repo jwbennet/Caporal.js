@@ -11,6 +11,7 @@ describe('Chaining 2 commands', () => {
     .version('1.0.0')
     .command('foo')
     .action(function() {})
+    .and()
     .command('bar')
     .action(function() {})
 
@@ -42,5 +43,3 @@ describe('Aliasing a command', () => {
 
 
 });
-
-

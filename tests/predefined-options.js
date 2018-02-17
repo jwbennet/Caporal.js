@@ -47,7 +47,7 @@ describe('Predefined options', function() {
   it(`-h should call help() when more than one command`, function() {
     program
       .reset()
-      .command('foo', 'My foo')
+      .command('foo', 'My foo').and()
       .command('bar', 'My bar');
 
     const exit = sinon.stub(process, "exit");

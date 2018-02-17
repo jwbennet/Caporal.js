@@ -14,6 +14,7 @@ describe('Execute command', () => {
     .command('foo')
     .option('--foo-option', 'foo option', program.INT, 1)
     .action(actionFoo)
+    .and()
     .command('bar')
     .option('--bar-option', 'bar option', program.INT, 2)
     .action(actionBar)

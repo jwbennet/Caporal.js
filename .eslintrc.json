@@ -14,10 +14,6 @@
       2
     ],
     "no-unused-vars": ["error", { "args": "none" }],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
     "no-console": 0,
     "quotes": 0,
     "semi": [0, "never"]

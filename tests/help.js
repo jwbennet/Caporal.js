@@ -36,6 +36,7 @@ describe('Calling {program} help', function() {
       .argument('[optional]', 'Optional arg', null, 2)
       .option('-f, --foo', 'Foo option')
       .action(function() {})
+      .and()
       .command('command2', '2nd command')
       .argument('<required>', 'Required arg')
       .argument('[optional]', 'Optional arg')
@@ -113,13 +114,16 @@ describe('Calling {program} help', function() {
 
     const help = sinon.spy(program, "_help");
     const exit = sinon.stub(process, "exit");
-    program.parse(makeArgv('help'));
-    should(help.callCount).be.eql(1);
-    should(exit.callCount).be.eql(1);
-    should(program._help()).containEql(customHelp);
-    help.restore();
-    exit.restore();
-    program.reset();
+    try {
+      program.parse(makeArgv('help'));
+      should(help.callCount).be.eql(1);
+      should(exit.callCount).be.eql(1);
+      should(program._help()).containEql(customHelp);
+    } finally {
+      help.restore();
+      exit.restore();
+      program.reset();
+    }
   });
 
   it(`should output specific command help for a program`, function() {
@@ -254,13 +258,16 @@ describe('Calling {program} --help', function() {
 
     const help = sinon.spy(program, "_help");
     const exit = sinon.stub(process, "exit");
-    program.parse(makeArgv(['--help']));
-    should(help.callCount).be.eql(1);
-    should(exit.callCount).be.eql(1);
-    should(program._help()).containEql(customHelp);
-    help.restore();
-    exit.restore();
-    program.reset();
+    try {
+      program.parse(makeArgv(['--help']));
+      should(help.callCount).be.eql(1);
+      should(exit.callCount).be.eql(1);
+      should(program._help()).containEql(customHelp);
+    } finally {
+      help.restore();
+      exit.restore();
+      program.reset();
+    }
   });
 
   it(`should output specific command help for a program`, function() {
@@ -396,13 +403,16 @@ describe('Calling {program} -h', function() {
 
     const help = sinon.spy(program, "_help");
     const exit = sinon.stub(process, "exit");
-    program.parse(makeArgv(['-h']));
-    should(help.callCount).be.eql(1);
-    should(exit.callCount).be.eql(1);
-    should(program._help()).containEql(customHelp);
-    help.restore();
-    exit.restore();
-    program.reset();
+    try {
+      program.parse(makeArgv(['-h']));
+      should(help.callCount).be.eql(1);
+      should(exit.callCount).be.eql(1);
+      should(program._help()).containEql(customHelp);
+    } finally {
+      help.restore();
+      exit.restore();
+      program.reset();
+    }
   });
 
   it(`should output specific command help for a program`, function() {
